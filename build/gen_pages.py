@@ -261,7 +261,7 @@ def industry_page(d):
 
 def industries_index(root):
     lst=[(d['nav'],d['sub'][:120].rsplit(' ',1)[0]+'…','/industries/'+d['slug']+'/') for d in INDUSTRIES]
-    return hero_inner(root,'We Work With','Industries We Work With','300+ brands across healthcare, automotive, finance, F&B, retail, property and education trust MYSense with their digital marketing.','Free Marketing Strategy Call','#general-form')+rows(lst,root,'Industries','Choose Your Industry')+G.clients_section(root,G.LOGOS_ALL[:8])+band(root)
+    return hero_inner(root,'We Work With','Industries We Work With','300+ brands across healthcare, automotive, finance, F&B, retail, property and education trust MYSense with their digital marketing.','Free Marketing Strategy Call','#general-form')+rows(lst,root,'Industries','Choose Your Industry')+G.clients_section(root,G.LOGOS_ALL)+band(root)
 
 # ======================================================================
 LOCS=[

@@ -152,8 +152,17 @@ def case_card(c, root):
 def logo_grid(logos, root):
     return '<div class="logo-grid" data-stagger="0.06">'+''.join(f'<div class="logo-card rv"><img src="{root}assets/img/logos/{f}" alt="{esc(n)}" loading="lazy"></div>' for n,f in logos)+'</div>'
 
+def logo_marquee(logos, root):
+    half=(len(logos)+1)//2; rows=[logos[:half], logos[half:]]
+    out=[]
+    for i,row in enumerate(rows):
+        cards=''.join(f'<div class="logo-card"><img src="{root}assets/img/logos/{f}" alt="{esc(n)}" loading="lazy"></div>' for n,f in row)
+        dur=max(30,int(len(row)*5.2))
+        out.append(f'<div class="logo-row{" logo-row--right" if i%2 else ""}" style="--dur:{dur}s" aria-hidden="{"true" if i else "false"}">{cards}{cards}</div>')
+    return '<div class="logo-marquee rv">'+''.join(out)+'</div>'
+
 def clients_strip(root, logos, est='300+ brands'):
-    return f'''<div class="clients__row rv"><span class="label">Selected Clients &amp; Partners</span><span class="plus">{PLUS}</span><span class="est">{esc(est)}</span><span class="plus plus--2">{PLUS}</span><span class="ghost"></span></div>{logo_grid(logos, root)}'''
+    return f'''<div class="clients__row rv"><span class="label">Selected Clients &amp; Partners</span><span class="plus">{PLUS}</span><span class="est">{esc(est)}</span><span class="plus plus--2">{PLUS}</span><span class="ghost"></span></div>{logo_marquee(logos, root)}'''
 
 def stat_card(v, suf, lbl, desc=None, pre='', short=False):
     d=f'<p class="stat-card__d">{esc(desc)}</p>' if desc else ''

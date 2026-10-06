@@ -631,3 +631,15 @@ body.menu-open{overflow:hidden}
 .ind-img{margin-top:70px;border-radius:12px;overflow:hidden;background:var(--g-300)}
 .ind-img img{width:100%;aspect-ratio:1232/520;object-fit:cover}
 @media (max-width:809px){.ind-img img{aspect-ratio:4/3}}
+
+/* ---------- client logo marquee (two rows, opposite directions) ---------- */
+.logo-marquee{margin-top:42px;display:flex;flex-direction:column;gap:5px;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.logo-row{display:flex;gap:5px;width:max-content;will-change:transform;animation:marq-left var(--dur,70s) linear infinite}
+.logo-row--right{animation-name:marq-right}
+.logo-marquee:hover .logo-row{animation-play-state:paused}
+.logo-row .logo-card{width:304px;flex:none}
+@keyframes marq-left{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes marq-right{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+@media (max-width:1199px){.logo-row .logo-card{width:240px}}
+@media (max-width:809px){.logo-row .logo-card{width:168px;height:100px}.logo-row .logo-card img{width:110px;height:46px}}
+@media (prefers-reduced-motion:reduce){.logo-row{animation:none}}

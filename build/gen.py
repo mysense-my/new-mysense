@@ -49,9 +49,10 @@ def md_prose(slug, skip_h1=True, drop_until=None, stop_at=None, keep_buttons=Fal
     flush(); return '\n'.join(out)
 
 # ---------- shared data ----------
-LOGOS_HOME=[('Giant','giant.png'),('Yamaha','yamaha.png'),('Eu Yan Sang','eu-yan-sang.png'),('Mamee','mamee.png'),('Subang Jaya Medical Centre','subang-jaya-medical-centre.png'),('FamilyMart','familymart.png'),('OldTown White Coffee','oldtown-white-coffee.png'),('Brother','brother.png')]
-LOGOS_ABOUT=[('SENA Healthcare Services','sena-healthcare.webp'),('Klinik Suzana','klinik-suzana.png'),('MATTA Fair','matta-fair.png'),('Taiwan Expo','taiwan-expo.png'),('ASEC','asec.png'),('Baagus','baagus.png'),('Dr Clear Aligners','dr-clear-aligners.png'),('Souper Tang','souper-tang.png')]
-LOGOS_ALL=LOGOS_HOME+LOGOS_ABOUT+[('Senarco','senarco.webp'),('Mummys Market','mummys-market.png'),('Arisun','arisun.png'),('First City University College','first-city-university-college.png')]
+LOGOS_ALL=[('Giant','giant.png'),('Klinik Suzana','klinik-suzana.png'),('Yamaha','yamaha.png'),('Eu Yan Sang','eu-yan-sang.png'),('Mamee','mamee.png'),('Subang Jaya Medical Centre','subang-jaya-medical-centre.png'),('FamilyMart','familymart.png'),('OldTown White Coffee','oldtown-white-coffee.png'),('Brother','brother.png'),('SENA Healthcare Services','sena-healthcare.png'),('MATTA Fair','matta-fair.png'),('Taiwan Expo','taiwan-expo.png'),
+ ('ASEC','asec.png'),('Baagus','baagus.png'),('Dr Clear Aligners','dr-clear-aligners.png'),('Souper Tang','souper-tang.png'),('Senarco','senarco.png'),('Mummys Market','mummys-market.png'),('Arisun','arisun.png'),('First City University College','first-city-university-college.png'),('Pureen','pureen.png'),('Skin Renew','skin-renew.png'),('A Klinik','a-klinik.png'),('Dr Chong Clinic','dr-chong-clinic.png')]
+LOGOS_HOME=LOGOS_ALL
+LOGOS_ABOUT=LOGOS_ALL
 
 CASES=[
  dict(slug='klinik-suzana-seo',client='Klinik Suzana',cat='Search Engine Optimisation',industry='Healthcare & aesthetics',logo='assets/img/logos/klinik-suzana.png',image='assets/img/cases/klinik-suzana.jpg',alt='Klinik Suzana team',
