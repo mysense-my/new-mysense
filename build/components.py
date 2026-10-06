@@ -74,8 +74,11 @@ def header(root):
             links+=f'<div class="nav__item"><a class="nav__link rollhost" href="{root}{h.lstrip("/")}">{roll(t)}</a></div>'
     menu=''
     for t,h,sub in NAV+[('Contact Us','/contact/',None)]:
-        menu+=f'<a href="{root}{h.lstrip("/")}">{roll(t)}</a>'
-        if sub: menu+='<div class="menu__sub">'+''.join(f'<a href="{root}{x.lstrip("/")}">{esc(n)}</a>' for n,x in sub)+'</div>'
+        if sub:
+            allname={'Services':'All services','We Work With':'All industries','Our Works':'All case studies'}.get(t,'View all')
+            menu+=f'<div class="menu__group"><button class="menu__item" aria-expanded="false"><span class="menu__ttl">{esc(t)}</span><span class="menu__tg">{CARET}</span></button><div class="menu__sub"><div><a href="{root}{h.lstrip("/")}">{esc(allname)} {ARROW_R}</a>'+''.join(f'<a href="{root}{x.lstrip("/")}">{esc(n)}</a>' for n,x in sub)+'</div></div></div>'
+        else:
+            menu+=f'<a class="menu__top-link" href="{root}{h.lstrip("/")}">{roll(t)}</a>'
     return f'''<header class="header"><nav class="nav" aria-label="Main">
   <a class="nav__logo" href="{root}" aria-label="MYSense home"><img src="{root}assets/img/brand/logo_white_mark.png" alt="MYSense" width="227" height="34"></a>
   <div class="nav__links">{links}</div>
