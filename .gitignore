@@ -1,0 +1,7 @@
+# source captures and teardown material stay local (large / third-party)
+00-current-site/
+01-template-velora/
+02-build-checks/
+.claude/
+.DS_Store
+__pycache__/
