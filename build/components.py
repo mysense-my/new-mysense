@@ -225,6 +225,14 @@ def contact_band(root, bg, title='Talk To Us', text=None, direct='Prefer a direc
 def cta_panel(title, text, btn_text, href, root):
     return f'<section class="section section--tight"><div class="wrap"><div class="cta-panel rv"><div><h2 class="t-display">{title}</h2><p>{esc(text)}</p></div>{btn(btn_text, root+href.lstrip("/"), light=True)}</div></div></section>'
 
+import hashlib as _hl, os as _os
+def _ver():
+    h=_hl.md5()
+    for f in ('src/main.css','src/main.js'):
+        fp=_os.path.join(_os.path.dirname(_os.path.abspath(__file__)),f)
+        if _os.path.exists(fp): h.update(open(fp,'rb').read())
+    return h.hexdigest()[:8]
+ASSET_V=_ver()
 def page(title, desc, body, root, canonical=''):
     return f'''<!doctype html>
 <html lang="en">
@@ -236,7 +244,7 @@ def page(title, desc, body, root, canonical=''):
 <link rel="icon" href="{root}assets/img/brand/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{root}assets/css/main.css">
+<link rel="stylesheet" href="{root}assets/css/main.css?v={ASSET_V}">
 </head>
 <body>
 {header(root)}
@@ -244,6 +252,6 @@ def page(title, desc, body, root, canonical=''):
 {body}
 </main>
 {footer(root)}
-<script src="{root}assets/js/main.js" defer></script>
+<script src="{root}assets/js/main.js?v={ASSET_V}" defer></script>
 </body>
 </html>'''
