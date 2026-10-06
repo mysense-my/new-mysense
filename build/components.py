@@ -80,7 +80,7 @@ def header(root):
         else:
             menu+=f'<a class="menu__top-link" href="{root}{h.lstrip("/")}">{roll(t)}</a>'
     return f'''<header class="header"><nav class="nav" aria-label="Main">
-  <a class="nav__logo" href="{root}" aria-label="MYSense home"><img src="{root}assets/img/brand/logo_white_mark.png" alt="MYSense" width="227" height="34"></a>
+  <a class="nav__logo" href="{root}" aria-label="MYSense home"><img src="{root}assets/img/brand/logo_white_mark.png" alt="MYSense" width="174" height="38"></a>
   <div class="nav__links">{links}</div>
   {btn('Contact Us', root+'contact/', light=True, nav=True)}
   <button class="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
@@ -225,10 +225,10 @@ def contact_band(root, bg, title='Talk To Us', text=None, direct='Prefer a direc
     return f'''<section class="contact" id="general-form"><div class="contact__bg"><img src="{root}{bg}" alt="" loading="lazy"></div>
 <div class="wrap contact__in">
   <div class="form-card rv">
-    <img class="logo" src="{root}assets/img/brand/logo_white_mark.png" alt="MYSense">
-    <p class="t-19" style="color:var(--card-2)">Claim your free digital marketing strategy session</p>
-    <p class="t-small" style="color:var(--g-300)">Worth RM3,000. Tell us a little about your business and we’ll get back to you within 1-2 working days.</p>
-    {hs_forms(uid)}
+    <img class="logo" src="{root}assets/img/brand/logo_black_mark.png" alt="MYSense">
+    <p class="t-19" style="color:var(--ink)">Claim your free digital marketing strategy session</p>
+    <p class="t-small" style="color:var(--g-600)">Worth RM3,000. Tell us a little about your business and we’ll get back to you within 1-2 working days.</p>
+    {hs_forms(uid, light=True)}
     <p class="note">By submitting, you agree to our <a class="rollhost" href="{root}terms-of-services/">{roll('Terms')}</a> and <a class="rollhost" href="{root}privacy-policy/">{roll('Privacy Policy')}</a>.</p>
   </div>
   <div class="contact__txt"><h2 class="t-display rv">{title}</h2><p class="rv">{esc(text)}</p>
