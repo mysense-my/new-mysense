@@ -10,6 +10,7 @@
   close&&close.addEventListener('click',()=>setMenu(false));
   document.addEventListener('keydown',e=>{ if(e.key==='Escape') setMenu(false); });
   $$('.menu__links a').forEach(a=>a.addEventListener('click',()=>setMenu(false)));
+  $$('.menu__item').forEach(b=>b.addEventListener('click',()=>{ const g=b.parentElement; const open=g.classList.toggle('is-open'); b.setAttribute('aria-expanded',open); }));
 
   /* ---- scroll reveal (template: opacity 0 → 1, translateY 150 → 0, 1.2s) ---- */
   const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }),{rootMargin:'0px 0px -8% 0px',threshold:0.05});
