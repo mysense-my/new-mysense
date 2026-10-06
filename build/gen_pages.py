@@ -312,7 +312,8 @@ def job_page(slug,title):
         return f'''<article class="article"><a class="back rv-hero d1" href="{root}career/"><i>{ARROW_L}</i>Back To Career</a>
 <div class="article__meta rv-hero d2"><p class="d">Careers in MYSense · Jaya One, Petaling Jaya</p><h1 class="t-h2">{esc(title)}</h1></div>
 <div class="prose rv">{body}</div>
-<div class="rv">{btn('Submit the Application now!','mailto:'+C.SITE['email']+'?subject='+title.replace(' ','%20'))}</div></article>'''
+<div class="rv" id="apply"><h2 class="t-h2" style="margin:20px 0 10px">Join Our Family</h2><p class="muted" style="margin-bottom:24px">Want to join us in taking over the digital world? Fill up the form below or send your application to <a href="mailto:{C.SITE['email']}" style="color:var(--accent)">{C.SITE['email']}</a>.</p>
+<div class="ghl" style="border-radius:12px;overflow:hidden;background:#fff"><iframe src="{C.GHL_JOBS}" title="Job application form" loading="lazy" style="width:100%;border:0;min-height:1100px"></iframe></div></div></article>'''
     return b
 
 # ======================================================================
@@ -331,7 +332,13 @@ def creator(root):
     out+=pains(root,'Why MYSense','Why Creators Choose MYSense?',why[:4])
     plats=''.join(f'<div class="stat-card rv" style="min-height:240px"><p class="t-19">{esc(t)}</p><p class="muted" style="margin-top:8px">{esc(s)}</p><p class="stat-card__d" style="padding-top:30px"><span class="t-small muted">Best for</span><br>{esc(bf)}</p></div>' for t,s,bf in [('Instagram','Reels · Stories · Posts','Fashion, Lifestyle, Beauty, Food'),('TikTok','Short-form · Live · Shop','Gen Z, Entertainment, Viral'),('小红书 XHS','Notes · Short Video','Chinese-speaking audience, Beauty')])
     out+=section(G.head_stack('Platforms','Platforms We Work With',maxw=600)+f'<div class="stat-grid cols-3" data-stagger="0.08">{plats}</div>')
-    out+=contact_band(root,'assets/img/team/life-2.webp',title='Join the MYSense Creator Network',text='It takes less than 2 minutes. Our team will review your application and get in touch with you.',direct='Follow MYSense Creator Club',direct_btn=('TikTok @mysense.im','https://www.tiktok.com/@mysense.im')).replace('id="general-form"','id="join"').replace('Claim my free strategy session','Join as a Creator').replace('Tell us about your business','Your social handles &amp; niche').replace('Which services are you interested in, and what are your goals?','Instagram / TikTok / XHS handle, follower count and your content niche')
+    out+=f'''<section class="contact" id="join"><div class="contact__bg"><img src="{root}assets/img/team/life-2.webp" alt="" loading="lazy"></div>
+<div class="wrap contact__in">
+  <div class="form-card rv"><img class="logo" src="{root}assets/img/brand/logo_white_mark.png" alt="MYSense"><p class="t-19" style="color:var(--card-2)">Join the MYSense Creator Network Today</p>
+    <div class="ghl"><iframe src="{C.GHL_CREATOR}" title="Creator sign-up form" loading="lazy" style="width:100%;border:0;min-height:900px;border-radius:8px;background:#fff"></iframe></div></div>
+  <div class="contact__txt"><h2 class="t-display rv">Ready to Start Earning?</h2><p class="rv">It takes less than 2 minutes. Our team will review your application and get in touch with you.</p>
+    <div class="contact__direct rv"><p class="t-24">Follow MYSense Creator Club</p>{btn('TikTok @mysense.im','https://www.tiktok.com/@mysense.im',light=True)}</div></div>
+</div></section>'''
     out+=G.faq_section(root,faqs,help=False)
     return out
 

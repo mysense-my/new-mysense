@@ -653,3 +653,26 @@ body.menu-open{overflow:hidden}
 @media (max-width:1199px){.logo-row .logo-card{width:240px}}
 @media (max-width:809px){.logo-row .logo-card{width:168px;height:100px}.logo-row .logo-card img{width:110px;height:46px}}
 @media (prefers-reduced-motion:reduce){.logo-row{animation:none}}
+
+/* ---------- HubSpot forms ---------- */
+.hswrap{display:flex;flex-direction:column;gap:14px}
+.hs-slot{min-height:120px}
+.hs-loading{color:var(--g-400);font-size:14px}
+.hs-toggle{font-size:14.08px;line-height:19.712px;color:var(--g-300)}
+.hs-switch{color:var(--card-2);text-decoration:underline;text-underline-offset:3px;font-weight:500}
+.hs-switch:hover{color:#fff}
+.hswrap--light .hs-toggle{color:var(--g-600)}
+.hswrap--light .hs-switch{color:var(--accent)}
+.hswrap--light .hs-loading{color:var(--g-500)}
+.embed--hs{padding:24px;background:#fff}
+/* if HubSpot renders raw HTML (no iframe), match the site look */
+.hswrap .hs-form fieldset{max-width:none;margin-bottom:12px}
+.hswrap .hs-form label{font-size:14.08px;line-height:19.712px;color:var(--card-2);display:block;margin-bottom:8px}
+.hswrap--light .hs-form label{color:var(--ink)}
+.hswrap .hs-form .hs-input{width:100%!important;background:var(--glass);border:0;border-radius:999px;padding:12px 14px;height:40px;color:#fff;font:inherit;font-size:14px}
+.hswrap--light .hs-form .hs-input{background:var(--g-100);color:var(--ink)}
+.hswrap .hs-form textarea.hs-input{height:150px;border-radius:6px}
+.hswrap .hs-form .hs-button{width:100%;height:45px;border-radius:999px;background:var(--dark);color:#fff;border:0;font:600 14px/16.8px var(--font-body);cursor:pointer}
+.hswrap .hs-form .hs-button:hover{background:var(--accent)}
+.hswrap .hs-error-msgs{list-style:none;padding:0;margin:6px 0 0;font-size:12px;color:#ffb4c2}
+.form-card .form-card-note{margin-top:4px}

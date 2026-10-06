@@ -205,19 +205,32 @@ def post_sm(p, root):
     return f'''<a class="post-sm rv" href="{root}{p['href'].lstrip('/')}"><div class="post-sm__img"><img src="{root}{p['image']}" alt="" loading="lazy"></div>
 <div class="post-sm__body"><p class="t">{esc(p['title'])}</p><div class="post-sm__foot"><span class="t-small d">{esc(p['date'])}</span>{sq(small=True)}</div></div></a>'''
 
-def contact_band(root, bg, title='Talk To Us', text=None, direct='Prefer a direct conversation?', direct_btn=('Let’s Talk Now!','https://wa.me/60193541688')):
+HS_PORTAL='40037102'; HS_REGION='na2'
+HS_FORM_A='1a414128-01fe-423e-9624-77bae980b62a'   # "Talk To Our Experts" (company email)
+HS_FORM_B='81cb68b2-65f2-4aad-acf6-5fd2129b14b4'   # "Talk To Our Experts - New Business" (any email)
+GHL_CREATOR='https://api.leadconnectorhq.com/widget/form/07BEO1PeTSJRPoCSMJCc'
+GHL_JOBS='https://api.leadconnectorhq.com/widget/form/MNhu9hIkKctMUnvR9I25'
+
+def hs_forms(uid, light=False):
+    """HubSpot form A with the site's new-business toggle (form B loaded on first click)."""
+    return f'''<div class="hswrap{" hswrap--light" if light else ""}" data-hs-wrap>
+  <div class="hs-slot" data-hs-form="{HS_FORM_A}" id="hs-a-{uid}"><p class="hs-loading">Loading form…</p></div>
+  <div class="hs-slot hs-slot--b" data-hs-form="{HS_FORM_B}" data-hs-lazy id="hs-b-{uid}" hidden></div>
+  <p class="hs-toggle"><span class="hs-q">Don’t have a company email?</span> <button type="button" class="hs-switch" data-hs-show="b">New business? Submit here →</button></p>
+  <p class="hs-toggle hs-toggle--b" hidden><span class="hs-q">No problem, new businesses can reach us with any email address.</span> <button type="button" class="hs-switch" data-hs-show="a">← back to the main form</button></p>
+</div>'''
+
+def contact_band(root, bg, title='Talk To Us', text=None, direct='Prefer a direct conversation?', direct_btn=('Let’s Talk Now!','https://wa.me/60193541688'), uid='band'):
     text = text or "Tell us a bit about your business and we'll get back to you within 1-2 working days with the next steps."
     return f'''<section class="contact" id="general-form"><div class="contact__bg"><img src="{root}{bg}" alt="" loading="lazy"></div>
 <div class="wrap contact__in">
-  <form class="form-card rv" data-mock>
+  <div class="form-card rv">
     <img class="logo" src="{root}assets/img/brand/logo_white_mark.png" alt="MYSense">
-    <div class="field"><label for="f-name">Name</label><input id="f-name" type="text" placeholder="Your name" required></div>
-    <div class="field"><label for="f-email">Company email</label><input id="f-email" type="email" placeholder="you@company.com" required></div>
-    <div class="field"><label for="f-phone">WhatsApp number</label><input id="f-phone" type="tel" placeholder="+60"></div>
-    <div class="field"><label for="f-msg">Tell us about your business</label><textarea id="f-msg" placeholder="Which services are you interested in, and what are your goals?"></textarea></div>
-    <button class="btn btn--submit" type="submit">Get Your Free Strategy Plan</button>
+    <p class="t-19" style="color:var(--card-2)">Claim your free digital marketing strategy session</p>
+    <p class="t-small" style="color:var(--g-300)">Worth RM3,000. Tell us a little about your business and we’ll get back to you within 1-2 working days.</p>
+    {hs_forms(uid)}
     <p class="note">By submitting, you agree to our <a class="rollhost" href="{root}terms-of-services/">{roll('Terms')}</a> and <a class="rollhost" href="{root}privacy-policy/">{roll('Privacy Policy')}</a>.</p>
-  </form>
+  </div>
   <div class="contact__txt"><h2 class="t-display rv">{title}</h2><p class="rv">{esc(text)}</p>
     <div class="contact__direct rv"><p class="t-24">{esc(direct)}</p>{btn(direct_btn[0], direct_btn[1] if direct_btn[1].startswith('http') else root+direct_btn[1].lstrip('/'), light=True)}</div></div>
 </div></section>'''

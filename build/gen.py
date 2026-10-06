@@ -254,15 +254,7 @@ def contact(root):
     <div class="book__img"><img class="bg" src="{root}assets/img/misc/team-meeting.webp" alt=""><h2 class="t-h2">Claim your free digital marketing strategy session, worth RM3,000</h2>
       <div class="book__quote"><p>“Five stars for MYSense! They provide clear data and numbers so you always know exactly how your investment is performing.”</p><div class="who"><span style="width:45px;height:45px;border-radius:999px;background:var(--card);color:var(--ink);display:inline-flex;align-items:center;justify-content:center;font-weight:600">A</span><div><p>Aizat Anuar</p><p class="t-small r">Google review</p></div></div></div></div>
     <div class="book__body">{trust([root+a for a in AV],strong='300+ brands in Malaysia')}<p>Book a free 30-minute strategy session. We’ll review your website, ads and social, and show you the 3 changes most likely to bring in more leads. We get back to you within 1-2 working days.</p>
-      <form class="embed" data-mock>
-        <div class="field"><label for="c-name">Name</label><input id="c-name" type="text" placeholder="Your name" required></div>
-        <div class="field"><label for="c-email">Company email</label><input id="c-email" type="email" placeholder="you@company.com" required></div>
-        <div class="field"><label for="c-phone">WhatsApp number</label><input id="c-phone" type="tel" placeholder="+60"></div>
-        <div class="field"><label for="c-svc">Service you are interested in</label><select id="c-svc"><option>Search Engine Optimisation</option><option>Generative Engine Optimisation</option><option>Google Ads (SEM)</option><option>Social Media Marketing</option><option>Influencer Marketing</option><option>Website Development</option><option>Not sure yet</option></select></div>
-        <div class="field"><label for="c-msg">Message</label><textarea id="c-msg" placeholder="Tell us a little about your business"></textarea></div>
-        <button class="btn btn--submit" type="submit">Talk To Our Experts Today!</button>
-        <p class="t-small muted">Don’t have a company email? No problem, new businesses can reach us with any email address.</p>
-      </form></div>
+      <div class="embed embed--hs">{hs_forms('contact', light=True)}</div></div>
   </div>
 </div></section>''' + section(f'''<div class="two-col"><div class="rv">{label('Head Office')}</div><div class="two-col__right">
 <p class="t-24 rv">{esc(C.SITE['address'])}</p><p class="t-24 rv"><a class="rollhost" href="{C.SITE['phone_href']}">{roll('+6019-3541688')}</a> · <a class="rollhost" href="mailto:{C.SITE['email']}">{roll(C.SITE['email'])}</a></p>

@@ -89,6 +89,20 @@
     let tick=false; addEventListener('scroll',()=>{ if(!tick){ tick=true; requestAnimationFrame(()=>{update();tick=false;}); } },{passive:true}); addEventListener('resize',update); update(); setTimeout(update,300);
   }
 
+  /* ---- HubSpot forms (portal 40037102 / na2): load on approach, A/B toggle like the live site ---- */
+  const HS={portal:'40037102',region:'na2',loaded:false,queue:[]};
+  const hsCreate=slot=>{ if(slot.dataset.done) return; slot.dataset.done='1'; slot.innerHTML='';
+    window.hbspt.forms.create({region:HS.region,portalId:HS.portal,formId:slot.dataset.hsForm,target:'#'+slot.id,cssClass:'ms-hs'}); };
+  const hsLoad=cb=>{ if(window.hbspt&&window.hbspt.forms) return cb(); HS.queue.push(cb); if(HS.loaded) return; HS.loaded=true;
+    const sc=document.createElement('script'); sc.src='https://js-na2.hsforms.net/forms/embed/v2.js'; sc.async=true; sc.onload=()=>{HS.queue.forEach(f=>f()); HS.queue=[];}; sc.onerror=()=>$$('.hs-loading').forEach(e=>e.textContent='The form could not load. Email contact@mysense.com.my or WhatsApp +6019-3541688.'); document.head.appendChild(sc); };
+  const slots=$$('[data-hs-form]:not([data-hs-lazy])');
+  if(slots.length){ const hio=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ hio.unobserve(e.target); hsLoad(()=>hsCreate(e.target)); } }),{rootMargin:'600px 0px'}); slots.forEach(sl=>hio.observe(sl)); }
+  $$('[data-hs-wrap]').forEach(w=>{
+    const a=$('.hs-slot:not(.hs-slot--b)',w), b=$('.hs-slot--b',w), ta=$('.hs-toggle:not(.hs-toggle--b)',w), tb=$('.hs-toggle--b',w);
+    $$('.hs-switch',w).forEach(btn=>btn.addEventListener('click',()=>{ const showB=btn.dataset.hsShow==='b';
+      a.hidden=showB; b.hidden=!showB; ta.hidden=showB; tb.hidden=!showB; if(showB) hsLoad(()=>hsCreate(b)); }));
+  });
+
   /* ---- current year ---- */
   $$('[data-year]').forEach(e=>e.textContent=new Date().getFullYear());
 })();
