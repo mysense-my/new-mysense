@@ -189,7 +189,7 @@ def service_page(s):
 
 def services_index(root):
     lst=[(s['nav'],s['sub'][:110].rsplit(' ',1)[0]+'…','/services/'+s['slug']+'/') for s in SERVICES]+[('White Label','White-label digital marketing solutions delivered under your brand. You manage clients, we handle delivery.','/white-label/')]
-    return (hero_inner(root,'Jaya One, Petaling Jaya • Serving the Klang Valley','Digital Marketing Agency In Petaling Jaya That Grows Leads, Not Just Likes','SEO, Google Ads, social media, influencer campaigns and websites, planned, run and reported by one team in PJ. Clear RM pricing, monthly reports, no lock-in surprises.','Claim my free strategy session','#general-form')
+    return (hero_inner(root,'Jaya One, Petaling Jaya • Serving the Klang Valley','Digital Marketing Agency In Petaling Jaya That Grows Leads, Not Just Likes','SEO, GEO, Google Ads, social media, influencer marketing and websites, all planned, run and tracked using real data to grow your business.','Claim my free strategy session','#general-form')
         + rows(lst,root,'Services','Our Digital Marketing Services','With our expertise in different platforms, we strive to leave our footprint in all the platforms that can bring your brand to more eyes.')
         + panel_section(root,'Services','What We Do Best',G.SERVICES_ACC)
         + section(f'''<div class="plans"><div class="plan rv"><p class="plan__name">Not sure where to start?</p><p class="plan__h">Book a free 30-minute strategy session. <span>We’ll review your website, ads and social, and show you the 3 changes most likely to bring in more leads.</span></p><div class="plan__price"><span class="pre">RM</span><span class="big">3,000</span><span class="suf">value, free</span></div>{btn('Book my free session','#general-form')}</div>
@@ -371,7 +371,7 @@ def white_label(root):
 
 # ======================================================================
 def build(write):
-    write('/services/','Digital Marketing Agency Petaling Jaya Services | MYSense','SEO, Google Ads, social media, influencer campaigns and websites, planned, run and reported by one team in PJ.',services_index)
+    write('/services/','Digital Marketing Agency Petaling Jaya Services | MYSense','SEO, GEO, Google Ads, social media, influencer marketing and websites, all planned, run and tracked using real data to grow your business.',services_index)
     for s in SERVICES: write(f'/services/{s["slug"]}/',f'{s["nav"]} Malaysia | MYSense',s['sub'][:155],service_page(s))
     write('/white-label/','White Label Digital Marketing Services Malaysia | MYSense','White-label digital marketing solutions delivered under your brand.',white_label)
     write('/industries/','Industries We Work With | MYSense','Digital marketing for healthcare, automotive, finance, beauty, home improvement, education, F&B, B2B and fashion brands in Malaysia.',industries_index)
